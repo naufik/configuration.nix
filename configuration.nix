@@ -9,7 +9,8 @@ let
   
   # overridePkgs
   spotifydMpris = unstablePkgs.spotifyd.override { withMpris = true; withPulseAudio = true; };
-  
+  fixLinks = pkg: pkg.override { nss = pkgs.nss_latest; };
+
   # bash aliases
   aliases = {
     vim = "nvim";
@@ -122,7 +123,7 @@ in
    pciutils acpi actkbd 
    
    # Desktop environment 
-   albert dunst
+   xmobar albert dunst 
    
    # Themes
    qogir-theme qogir-icon-theme
@@ -175,6 +176,7 @@ in
     shadowExclude = [
       "window_type *= 'menu'"
       "class_g = 'firefox' && argb"
+      "class_g = 'albert'"
     ];
   };
 
@@ -229,7 +231,7 @@ in
       libsForQt5.ark
        
       # communications
-      unstablePkgs.discord
+      (fixLinks unstablePkgs.discord)
       unstablePkgs.fluffychat
 
       # productivity
@@ -247,7 +249,7 @@ in
 
       # Games
       crawlTiles
-      dwarf-fortress 
+      # dwarf-fortress - server error can't download
     ];
 
   };
