@@ -51,9 +51,11 @@ in
   time.timeZone = "Australia/Melbourne";
 
   # Add gpg agent.
+  services.pcscd.enable = true;
   programs.gnupg = {
     agent.enable = true;
     agent.pinentryFlavor = "curses";
+    agent.enableSSHSupport = true;
   };
 
   # DHCP for wireless interface
@@ -76,7 +78,6 @@ in
   
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
 
   # Enable sound.
   sound.enable = true;
@@ -121,11 +122,14 @@ in
 
   environment.systemPackages = with pkgs; [
    # System 
-   udiskie pciutils acpi actkbd 
+   udiskie pciutils acpi actkbd pinentry-curses 
    
    # Desktop environment 
    xmobar albert dunst 
    
+   # Encrypt
+   age
+
    # Themes
    qogir-theme qogir-icon-theme
    
