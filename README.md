@@ -1,9 +1,6 @@
 # NixOS Configuration
+(a.k.a **laptop-as-code**)
 
-Learning Nix{,OS} so here goes...
+Not yet self-isolated.
 
-A lot of todos but meh it'll pass by.
-
-Not yet self-isolated, may get there or may not.
-
-v0.1.0 (monolith)
+v0.1.1 (monolith)
