@@ -112,6 +112,7 @@ in
     sessionCommands = ''
       albert&
       dunst&
+      udiskie&
     '';
   };
 
@@ -120,7 +121,7 @@ in
 
   environment.systemPackages = with pkgs; [
    # System 
-   pciutils acpi actkbd 
+   udiskie pciutils acpi actkbd 
    
    # Desktop environment 
    xmobar albert dunst 
@@ -249,7 +250,7 @@ in
 
       # Games
       crawlTiles
-      # dwarf-fortress - server error can't download
+      dwarf-fortress
     ];
 
   };
