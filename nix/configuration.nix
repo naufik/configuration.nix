@@ -130,13 +130,10 @@ in
    # Encrypt
    age
 
-   # Themes
-   qogir-theme qogir-icon-theme
-   
    # Built in desktop app
    wget firefox thunderbird alacritty git
    neofetch tmux htop pavucontrol neovim 
-   feh
+   feh scrot
    
    # Dev (global)
    cachix rnix-lsp 
@@ -224,7 +221,14 @@ in
 
     gtk = {
       enable = true;
-      theme.name = "Qogir-dark";
+      theme = {
+        name = "Qogir-Dark";
+        package = pkgs.qogir-theme;
+      };
+      iconTheme = {
+        name = "Qogir";
+        package = pkgs.qogir-icon-theme;
+      };
     };
     
     # User-level packages. 
@@ -236,8 +240,9 @@ in
       libsForQt5.ark
        
       # communications
-      (fixLinks unstablePkgs.discord)
+      unstablePkgs.discord
       unstablePkgs.fluffychat
+      tdesktop  # (telegram desktop)
 
       # productivity
       rawtherapee
