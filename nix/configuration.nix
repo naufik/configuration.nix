@@ -5,7 +5,7 @@
 { config, pkgs, ... }:
 let
   home-manager = import <home-manager> {};
-  unstablePkgs = import <unstable> { config.allowUnfree = true; }; 
+  unstablePkgs = import <unstable-pkgs> { config.allowUnfree = true; }; 
   
   # overridePkgs
   spotifydMpris = unstablePkgs.spotifyd.override { withMpris = true; withPulseAudio = true; };
@@ -182,23 +182,7 @@ in
     ];
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-  
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
+  # disable the firewall altogether.
   networking.firewall.enable = false;
   
   # TODO: move from xmonad to this.
@@ -240,14 +224,14 @@ in
       libsForQt5.ark
        
       # communications
-      unstablePkgs.discord
+      discord
       unstablePkgs.fluffychat
       tdesktop  # (telegram desktop)
 
       # productivity
       rawtherapee
       gimp
-      unstablePkgs.notion-app-enhanced
+      notion-app-enhanced
       fritzing
 
       # coding
