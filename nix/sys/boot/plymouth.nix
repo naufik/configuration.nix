@@ -1,8 +1,6 @@
 { config, pkgs, lib, ... }:
 let
   cfg = config.boot.plymouth-encrypt;
-
-  unstablePkgs = import <unstable-pkgs> { config.allowUnfree = true; };
 in
 with lib;
 {
