@@ -20,12 +20,12 @@ in
   imports =
     [
       "${<home-manager>}/nixos"
+      ./sys/boot/plymouth.nix
       ./machines/daily-driver/hardware-configuration.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
 
-  # Can we change to the non-SVG version of twemoji??
   nixpkgs.config.joypixels.acceptLicense = true;
   nix.trustedUsers = [ "root" "naufik" ];
 
@@ -36,6 +36,8 @@ in
   boot.loader.grub.device = "nodev";
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = unstablePkgs.linuxPackages_latest;
+  
+  boot.plymouth-encrypt.enable = true;
 
   networking.hostName = "rivne"; # Define your hostname.
   networking.wireless.iwd.enable = true; #iwd support
@@ -44,6 +46,7 @@ in
   # Base programs
   programs.light.enable = true;
   programs.dconf.enable = true;
+
   # Fingerprint Daemon
   services.fprintd.enable = true;
 
@@ -202,8 +205,6 @@ in
   # Home Manager config
   home-manager.users.naufik = {
     nixpkgs.config.allowUnfree = true;
-
-    programs.zsh.shellAliases = aliases;
 
     programs.bash.shellAliases = aliases;
 
