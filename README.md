@@ -22,4 +22,11 @@ This configuration uses stage-1 systemd (`boot.initrd.systemd`) to run `plymouth
 
 Some users are reporting that this option [does not work reliably](https://github.com/NixOS/nixpkgs/issues/26722#issuecomment-1147735675) so take caution. Disable with `boot.plymouth-encrypt.enable = false;`.
 
+## License
+
+MIT License apply to the configuration files in this repository, but not the packages built.
+
+Exceptions:
+- Framework Laptop Logo in `./nix/sys/boot/logo.png`. All rights reserved by Framework Computer Inc.
+
 **Marked as version 0.2.1** (semi-monolith)
