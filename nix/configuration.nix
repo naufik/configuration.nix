@@ -143,6 +143,9 @@ in
     wget firefox thunderbird alacritty git
     neofetch tmux htop pavucontrol neovim
     feh scrot
+    
+    # PDF reader
+    evince
 
     # Dev (global)
     cachix rnix-lsp
@@ -208,6 +211,14 @@ in
 
     programs.bash.shellAliases = aliases;
 
+    home.pointerCursor = {
+      x11.enable = true;
+      gtk.enable = true;
+
+      package = pkgs.qogir-icon-theme;
+      name = "Qogir-dark";
+    };
+
     gtk = {
       enable = true;
       theme = {
@@ -215,7 +226,7 @@ in
         package = pkgs.qogir-theme;
       };
       iconTheme = {
-        name = "Qogir";
+        name = "Qogir-dark";
         package = pkgs.qogir-icon-theme;
       };
     };
@@ -238,6 +249,9 @@ in
       gimp
       notion-app-enhanced
       fritzing
+
+      # fun
+      inform7 gnome-inform7
 
       # coding
       vscodium
