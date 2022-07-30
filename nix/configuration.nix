@@ -129,6 +129,7 @@ in
   environment.systemPackages = with pkgs; [
     # System
     udiskie pciutils acpi actkbd pinentry-curses
+    usbtools
 
     # System: Helpers
     nixos-option
@@ -250,9 +251,6 @@ in
       notion-app-enhanced
       fritzing
 
-      # fun
-      inform7 gnome-inform7
-
       # coding
       vscodium
 
@@ -263,6 +261,10 @@ in
       # Games
       crawlTiles
       dwarf-fortress
+
+      # Game development
+      blender
+      godot
     ];
 
   };
