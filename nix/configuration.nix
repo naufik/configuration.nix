@@ -8,8 +8,7 @@ let
   unstablePkgs = import <unstable-pkgs> { config.allowUnfree = true; };
 
   # overridePkgs
-  spotifydMpris = unstablePkgs.spotifyd.override { withMpris = true; withPulseAudio = true; };
-  fixLinks = pkg: pkg.override { nss = pkgs.nss_latest; };
+  spotifydMpris = pkgs.spotifyd.override { withMpris = true; withPulseAudio = true; };
 
   # bash aliases
   aliases = {
@@ -35,9 +34,10 @@ in
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev";
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = unstablePkgs.linuxPackages_latest;
-  
-  boot.plymouth-encrypt.enable = true;
+  boot.kernelPackages = pkgs.linuxPackages_5_18;
+
+  # This was a good run but also there's more harm than good right now.
+  boot.plymouth-encrypt.enable = false;
 
   networking.hostName = "rivne"; # Define your hostname.
   networking.wireless.iwd.enable = true; #iwd support
@@ -145,7 +145,7 @@ in
     feh scrot
     
     # PDF reader
-    evince
+    evince pdfarranger
 
     # Dev (global)
     cachix rnix-lsp
