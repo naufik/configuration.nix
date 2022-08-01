@@ -64,9 +64,12 @@ in
   networking.interfaces.wlan0.useDHCP = true;
 
   # Users and shells
-
-  programs.zsh.enable = true;
-  programs.zsh.shellAliases = aliases;
+  programs.zsh = {
+    enable = true;
+    shellAliases = aliases;
+    enableAutosuggestions = true;
+    syntaxHighlighting.enable = true;
+  };
 
   users.users.naufik = {
     isNormalUser = true;
@@ -128,8 +131,7 @@ in
 
   environment.systemPackages = with pkgs; [
     # System
-    udiskie pciutils acpi actkbd pinentry-curses
-    usbtools
+    udiskie pciutils usbutils acpi actkbd pinentry-curses
 
     # System: Helpers
     nixos-option
@@ -141,9 +143,8 @@ in
     age
 
     # Built in desktop app
-    wget firefox thunderbird alacritty git
-    neofetch tmux htop pavucontrol neovim
-    feh scrot
+    wget firefox thunderbird alacritty git neofetch tmux htop pavucontrol
+    neovim feh scrot neovide
     
     # PDF reader
     evince pdfarranger
@@ -197,14 +198,6 @@ in
 
   # disable the firewall altogether.
   networking.firewall.enable = false;
-
-  # services.actkbd = {
-  #  enable = true;
-  #  bindings = [
-  #    { keys = [65]; events = [ "key" ]; command = "${pkgs.light}/bin/light -U 10"; }
-  #    { keys = [66]; events = [ "key" ]; command = "${pkgs.light}/bin/light -A 10"; }
-  #  ];
-  #};
 
   # Home Manager config
   home-manager.users.naufik = {
