@@ -20,6 +20,7 @@ in
     [
       "${<home-manager>}/nixos"
       ./sys/boot/plymouth.nix
+      ./sys/services.nix
       ./machines/daily-driver/hardware-configuration.nix
     ];
 
@@ -122,7 +123,6 @@ in
     sessionCommands = ''
       albert&
       dunst&
-      udiskie&
     '';
   };
 
