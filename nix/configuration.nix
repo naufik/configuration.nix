@@ -37,9 +37,6 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_5_18;
 
-  # This was a good run but also there's more harm than good right now.
-  boot.plymouth-encrypt.enable = false;
-
   networking.hostName = "rivne"; # Define your hostname.
   networking.wireless.iwd.enable = true; #iwd support
   networking.networkmanager.wifi.backend = "iwd";
@@ -131,7 +128,7 @@ in
 
   environment.systemPackages = with pkgs; [
     # System
-    udiskie pciutils usbutils acpi actkbd pinentry-curses
+    pciutils usbutils acpi actkbd pinentry-curses
 
     # System: Helpers
     nixos-option
@@ -259,8 +256,13 @@ in
       blender
       godot
     ];
-
   };
+
+  # Modules down here are all inhouse and coded locally.
+
+  # This was a good run but also there's more harm than good right now.
+  boot.plymouth-encrypt.enable = false;
+  system.devices.autoUSB.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
