@@ -11,7 +11,7 @@
   };
     
   config = {
-    systemd.user.services.udiskie = lib.mkIf cfg.enable {
+    systemd.services.udiskie = lib.mkIf cfg.enable {
       description = "Auto mount usb device";
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {

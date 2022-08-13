@@ -65,7 +65,7 @@ in
   programs.zsh = {
     enable = true;
     shellAliases = aliases;
-    enableAutosuggestions = true;
+    autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
   };
 
@@ -147,7 +147,7 @@ in
     evince pdfarranger
 
     # Dev (global)
-    cachix rnix-lsp
+    cachix rnix-lsp sumneko-lua-language-server
 
     # spotify
     spotifydMpris playerctl
