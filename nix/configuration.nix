@@ -232,7 +232,7 @@ in
 
       # communications
       discord
-      unstablePkgs.fluffychat
+      fluffychat
       tdesktop  # (telegram desktop)
 
       # productivity
@@ -240,6 +240,7 @@ in
       gimp
       notion-app-enhanced
       fritzing
+      krita
 
       # coding
       vscodium
