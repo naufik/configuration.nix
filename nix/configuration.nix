@@ -35,7 +35,7 @@ in
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev";
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_5_18;
+  boot.kernelPackages = pkgs.linuxPackages_5_19;
 
   networking.hostName = "rivne"; # Define your hostname.
   networking.wireless.iwd.enable = true; #iwd support
@@ -49,7 +49,8 @@ in
   services.fprintd.enable = true;
 
   # Set your time zone.
-  time.timeZone = "Australia/Melbourne";
+  # time.timeZone = "Australia/Melbourne";
+  time.timeZone = "Asia/Jakarta";
 
   # Add gpg agent.
   programs.gnupg = {
@@ -92,6 +93,7 @@ in
 
   services.pipewire = {
     enable = true;
+
     # I genuinely have no clue, enable everything.
     pulse.enable = true;
     alsa.enable = true;
@@ -116,10 +118,9 @@ in
   };
 
   services.xserver.displayManager = {
-    # TODO: run as services.
     sessionCommands = ''
-      albert&
       dunst&
+      albert&
     '';
   };
 
@@ -134,10 +135,11 @@ in
     nixos-option
 
     # Desktop environment
-    xmobar albert dunst
+    # TODO: remove albert after rofi is entirely set up
+    xmobar albert rofi eww dunst
 
-    # Encrypt
-    age
+    # Security and Networking 
+    age openvpn
 
     # Built in desktop app
     wget firefox thunderbird alacritty git neofetch tmux htop pavucontrol
@@ -146,7 +148,7 @@ in
     # PDF reader
     evince pdfarranger
 
-    # Dev (global)
+    # Global dev tools. 
     cachix rnix-lsp sumneko-lua-language-server
 
     # spotify
@@ -177,12 +179,12 @@ in
 
   # Section/Services
 
-  # Essentials:
+  # Essentials
   services.acpid.enable = true;
   services.tlp.enable = true;
   services.getty.autologinUser = "naufik";
 
-  # Aesthetics:
+  # Aesthetics
   services.picom = {
     enable = true;
     shadow = true;
@@ -236,6 +238,7 @@ in
       tdesktop  # (telegram desktop)
 
       # productivity
+      anytype
       rawtherapee
       gimp
       notion-app-enhanced
