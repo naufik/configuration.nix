@@ -13,7 +13,11 @@
   config = {
     systemd.services.udiskie = lib.mkIf cfg.enable {
       description = "Auto mount usb device";
-      wantedBy = [ "multi-user.target" ];
+
+      wantedBy = [ "graphical-session.target" ];
+      partOf = [ "graphical-session.target" ];
+      after = ["graphical-session-pre.target"];
+
       serviceConfig = {
         Type = "exec";
         Restart = "always";
