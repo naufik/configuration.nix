@@ -126,6 +126,8 @@ in
 
   services.xserver.displayManager.autoLogin.user = "naufik";
   xdg.autostart.enable = true;
+  
+  services.tumbler.enable = true;
 
   environment.systemPackages = with pkgs; [
     # System
