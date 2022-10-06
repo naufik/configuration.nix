@@ -247,6 +247,8 @@ in
       fritzing
       krita
 
+      zoom-us
+
       # coding
       vscodium
 
