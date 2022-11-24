@@ -26,10 +26,10 @@ in
       ./machines/daily-driver/hardware-configuration.nix
     ];
 
-  nixpkgs.config.allowUnfree = true;
-
-  nixpkgs.config.joypixels.acceptLicense = true;
   nix.trustedUsers = [ "root" "naufik" ];
+  nix.settings.experimental-features = true;
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.joypixels.acceptLicense = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.grub.enable = true;
