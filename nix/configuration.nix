@@ -14,6 +14,8 @@ let
   aliases = {
     vim = "nvim";
   };
+
+  fixNssElectron = pkg: pkg.override { nss = pkgs.nss_latest; };
 in
 {
   imports =
@@ -35,7 +37,7 @@ in
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev";
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_5_19;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "rivne"; # Define your hostname.
   networking.wireless.iwd.enable = true; #iwd support
@@ -49,8 +51,7 @@ in
   services.fprintd.enable = true;
 
   # Set your time zone.
-  # time.timeZone = "Australia/Melbourne";
-  time.timeZone = "Asia/Jakarta";
+  time.timeZone = "Australia/Melbourne";
 
   # Add gpg agent.
   programs.gnupg = {
@@ -132,6 +133,7 @@ in
   environment.systemPackages = with pkgs; [
     # System
     pciutils usbutils acpi actkbd pinentry-curses
+    gsettings-desktop-schemas
 
     # System: Helpers
     nixos-option
@@ -144,7 +146,7 @@ in
     age openvpn
 
     # Built in desktop app
-    wget firefox thunderbird alacritty git neofetch tmux htop pavucontrol
+    wget thunderbird firefox alacritty git neofetch tmux htop pavucontrol
     neovim feh scrot neovide
     
     # PDF reader
@@ -233,9 +235,10 @@ in
       vlc
       xfce.thunar
       libsForQt5.ark
+      bitwarden
 
       # communications
-      discord
+      (fixNssElectron discord)
       fluffychat
       tdesktop  # (telegram desktop)
 
@@ -247,8 +250,6 @@ in
       fritzing
       krita
 
-      zoom-us
-
       # coding
       vscodium
 
@@ -259,6 +260,7 @@ in
       # Games
       crawlTiles
       dwarf-fortress
+      openttd
 
       # Game development
       blender
