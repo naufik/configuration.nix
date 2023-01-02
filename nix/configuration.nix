@@ -26,8 +26,8 @@ in
       ./machines/daily-driver/hardware-configuration.nix
     ];
 
-  nix.trustedUsers = [ "root" "naufik" ];
-  nix.settings.experimental-features = true;
+  nix.settings.trusted-users = [ "root" "naufik" ];
+  nix.settings.experimental-features = ["nix-command"];
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.joypixels.acceptLicense = true;
 
@@ -162,6 +162,7 @@ in
   # Fonts (system-level)
   fonts = {
     enableDefaultFonts = true;
+
     fontconfig = {
       enable = true;
       defaultFonts = {
@@ -226,6 +227,10 @@ in
         name = "Qogir-dark";
         package = pkgs.qogir-icon-theme;
       };
+
+      gtk4.extraConfig = {
+        gtk-hint-font-metrics = 1;
+      };
     };
 
     # User-level packages.
@@ -237,9 +242,11 @@ in
       libsForQt5.ark
       bitwarden
 
+      # Entertainment
+      psst
+
       # communications
       (fixNssElectron discord)
-      fluffychat
       tdesktop  # (telegram desktop)
 
       # productivity
@@ -266,6 +273,8 @@ in
       blender
       godot
     ];
+
+    home.stateVersion = "22.11";
   };
 
   # Modules down here are all inhouse and coded locally.

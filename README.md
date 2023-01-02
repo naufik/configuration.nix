@@ -2,8 +2,8 @@
 
 The full configuration assumes that the `root` user's `nix-channel` are set to point to:
 
-- `nixos` points to `nixos-22.05`
-- `home-manager` points to `home-manager/release-22.05`
+- `nixos` points to `nixos-22.11`
+- `home-manager` points to `home-manager/release-22.11`
 - `unstable-pkgs` points to `nixpkgs-unstable`
 
 ## Notes and Versioning
@@ -28,5 +28,3 @@ MIT License apply to the configuration files in this repository, but not the pac
 
 Exceptions:
 - Framework Laptop Logo in `./nix/sys/boot/logo.png`. All rights reserved by Framework Computer Inc.
-
-**Marked as version 0.2.1** (semi-monolith)
