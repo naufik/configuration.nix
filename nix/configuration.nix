@@ -260,6 +260,9 @@ in
       # coding
       vscodium
 
+      # Other devtools
+      terraform
+
       # Entertainment
       spotify
       spotify-tui
