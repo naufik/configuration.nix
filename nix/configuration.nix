@@ -7,7 +7,6 @@ let
   home-manager = import <home-manager> {};
   unstablePkgs = import <unstable-pkgs> { config.allowUnfree = true; };
 
-  # overridePkgs
   spotifydMpris = pkgs.spotifyd.override { withMpris = true; withPulseAudio = true; };
 
   # bash aliases
@@ -15,18 +14,19 @@ let
     vim = "nvim";
   };
 
-  fixNssElectron = pkg: pkg.override { nss = pkgs.nss_latest; };
+  extraImports = [
+      ./home/naufik
+  ];
 in
 {
   imports =
     [
-      "${<home-manager>}/nixos"
       ./sys/boot/plymouth.nix
       ./sys/services.nix
       ./machines/daily-driver/hardware-configuration.nix
-    ];
+    ] ++ extraImports;
 
-  nix.settings.trusted-users = [ "root" "naufik" ];
+  nix.settings.trusted-users = [ "root" ];
   nix.settings.experimental-features = ["nix-command"];
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.joypixels.acceptLicense = true;
@@ -71,20 +71,6 @@ in
     syntaxHighlighting.enable = true;
   };
 
-  users.users.naufik = {
-    isNormalUser = true;
-    extraGroups = ["video" "wheel" "networkmanager"];
-    home = "/home/naufik";
-    shell = pkgs.zsh;
-  };
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -116,13 +102,6 @@ in
     enable = true;
     enableContribAndExtras = true;
     extraPackages = haskellPackages: [ pkgs.haskellPackages.xmobar ];
-  };
-
-  services.xserver.displayManager = {
-    sessionCommands = ''
-      dunst&
-      albert&
-    '';
   };
 
   services.xserver.displayManager.autoLogin.user = "naufik";
@@ -202,83 +181,6 @@ in
 
   # disable the firewall altogether.
   networking.firewall.enable = false;
-
-  # Home Manager config
-  home-manager.users.naufik = {
-    nixpkgs.config.allowUnfree = true;
-
-    programs.bash.shellAliases = aliases;
-
-    home.pointerCursor = {
-      x11.enable = true;
-      gtk.enable = true;
-
-      package = pkgs.qogir-icon-theme;
-      name = "Qogir-dark";
-    };
-
-    gtk = {
-      enable = true;
-      theme = {
-        name = "Qogir-Dark";
-        package = pkgs.qogir-theme;
-      };
-      iconTheme = {
-        name = "Qogir-dark";
-        package = pkgs.qogir-icon-theme;
-      };
-
-      gtk4.extraConfig = {
-        gtk-hint-font-metrics = 1;
-      };
-    };
-
-    # User-level packages.
-    home.packages = with pkgs; [
-      # Basic Usability
-      flameshot
-      vlc
-      xfce.thunar
-      libsForQt5.ark
-      bitwarden
-
-      # Entertainment
-      psst
-
-      # communications
-      (fixNssElectron discord)
-      tdesktop  # (telegram desktop)
-
-      # productivity
-      anytype
-      rawtherapee
-      gimp
-      notion-app-enhanced
-      fritzing
-      krita
-
-      # coding
-      vscodium
-
-      # Other devtools
-      terraform
-
-      # Entertainment
-      spotify
-      spotify-tui
-
-      # Games
-      crawlTiles
-      dwarf-fortress
-      openttd
-
-      # Game development
-      blender
-      godot
-    ];
-
-    home.stateVersion = "22.11";
-  };
 
   # Modules down here are all inhouse and coded locally.
 
