@@ -29,11 +29,11 @@ in
         shell = pkgs.zsh;
       };
 
+      nixpkgs.config.allowUnfree = true;
+
+      programs.bash.shellAliases = aliases;
+
       home-manager.users.naufik = {
-        nixpkgs.config.allowUnfree = true;
-
-        programs.bash.shellAliases = aliases;
-
         home.pointerCursor = {
           x11.enable = true;
           gtk.enable = true;
@@ -104,6 +104,5 @@ in
 
         home.stateVersion = "22.11";
       };
-
     };
   }
