@@ -5,12 +5,6 @@
 { config, pkgs, ... }:
 let
   # unstablePkgs = import <unstable-pkgs> { config.allowUnfree = true; };
-  spotifydMpris = pkgs.spotifyd.override { withMpris = true; withPulseAudio = true; };
-
-  # bash aliases
-  aliases = {
-    vim = "nvim";
-  };
 
   extraImports = [
       ./home/naufik
@@ -26,7 +20,6 @@ in
   nix.settings.trusted-users = [ "root" ];
   nix.settings.experimental-features = ["nix-command"];
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.joypixels.acceptLicense = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.grub.enable = true;
@@ -36,13 +29,9 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-    # DHCP for wireless interface
-  networking.interfaces.wlan0.useDHCP = true;
-
-  # Users and shells
+# Users and shells
   programs.zsh = {
     enable = true;
-    shellAliases = aliases;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
   };
@@ -62,8 +51,6 @@ in
     # Global dev tools. 
     cachix rnix-lsp git
   ];
-
-   # Modules down here are all inhouse and coded locally.
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -117,6 +117,7 @@ in
     services.tumbler.enable = true;
 
     # Fonts (system-level)
+    nixpkgs.config.joypixels.acceptLicense = true;
     fonts = {
       enableDefaultFonts = true;
 
