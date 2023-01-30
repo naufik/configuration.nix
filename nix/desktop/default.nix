@@ -50,7 +50,7 @@ in
 
       # Built in desktop app
       thunderbird firefox alacritty pavucontrol
-      neovim feh scrot neovide
+      neovim feh scrot neovide filezilla
       
       # PDF reader
       evince pdfarranger
@@ -109,7 +109,6 @@ in
     };
 
     environment.variables = rec {
-      # XDG config directories (they're not set for some reason).
       XDG_CACHE_HOME = "\${HOME}/.cache";
       XDG_CONFIG_HOME = "\${HOME}/.config";
       XDG_DATA_HOME = "\${HOME}/.local/share";
