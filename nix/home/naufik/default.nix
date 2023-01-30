@@ -60,11 +60,6 @@ in
 
         # User-level packages.
         home.packages = with pkgs; [
-          # Basic Usability
-          flameshot
-          vlc
-          xfce.thunar
-          libsForQt5.ark
           bitwarden
 
           # Entertainment

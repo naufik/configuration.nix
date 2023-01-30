@@ -13,10 +13,11 @@ in
   imports = [
     ../sys/boot/plymouth.nix
     ../sys/services.nix
+    # TODO: separate this? but to me all the desktops should have a naufik user.
+    ../home/naufik
   ];
 
   config = {
-    networking.hostName = "rivne"; # Define your hostname.
     networking.wireless.iwd.enable = true; #iwd support
     networking.networkmanager.wifi.backend = "iwd";
 
@@ -40,6 +41,9 @@ in
     environment.systemPackages = with pkgs; [
       # Desktop environment
       xmobar albert rofi eww dunst
+      flameshot
+      xfce.thunar
+      libsForQt5.ark
 
       # Security and Networking 
       age
@@ -51,8 +55,8 @@ in
       # PDF reader
       evince pdfarranger
 
-      # spotify
-      spotifydMpris playerctl
+      # Multimedia
+      vlc spotifydMpris playerctl 
     ];
 
     # Enable touchpad support (enabled default in most desktopManager).

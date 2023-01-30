@@ -7,7 +7,6 @@ let
   # unstablePkgs = import <unstable-pkgs> { config.allowUnfree = true; };
 
   extraImports = [
-      ./home/naufik
       ./desktop
     ];
 in
