@@ -6,6 +6,14 @@ The full configuration assumes that the `root` user's `nix-channel` are set to p
 - `home-manager` points to `home-manager/release-22.11`
 - `unstable-pkgs` points to `nixpkgs-unstable`
 
+## Classes
+
+This entire thing is WIP.
+
+The goal is to separate different 'classes' of machines into their own cohesive configuration. So as this NixOS configuration is ported to different machines (unlikely, tbh), each machine is able to select its own "classes" and end up with an intersection of subset of configs that are available.
+
+At the moment, `desktop` is the only class since that's the only thing I use NixOS for. It contains my `desktop` environment. May add a `server` class for specific things.
+
 ## Notes and Versioning
 
 **Lack of self-isolation of config files**
