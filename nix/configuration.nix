@@ -37,9 +37,7 @@ in
 
   environment.systemPackages = with pkgs; [
     # System
-    pciutils usbutils acpi actkbd pinentry-curses
-    gsettings-desktop-schemas
-
+    pciutils usbutils 
     # System: Helpers
     nixos-option
 

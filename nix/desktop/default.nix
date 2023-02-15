@@ -13,6 +13,7 @@ in
   imports = [
     ../sys/boot/plymouth.nix
     ../sys/services.nix
+
     # TODO: separate this? but to me all the desktops should have a naufik user.
     ../home/naufik
   ];
@@ -39,6 +40,10 @@ in
     services.xserver.enable = true;
 
     environment.systemPackages = with pkgs; [
+      # Desktop tools
+      acpi actkbd pinentry-curses
+      gsettings-desktop-schemas
+
       # Desktop environment
       xmobar albert rofi eww dunst
       flameshot
