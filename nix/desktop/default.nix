@@ -32,6 +32,7 @@ in
 
     # Fingerprint Daemon
     services.fprintd.enable = true;
+    services.fwupd.enable = true;
 
     # Set your time zone.
     time.timeZone = "Australia/Melbourne";
@@ -43,6 +44,9 @@ in
       # Desktop tools
       acpi actkbd pinentry-curses
       gsettings-desktop-schemas
+
+      # Terminal
+      zellij
 
       # Desktop environment
       xmobar albert rofi eww dunst

@@ -76,6 +76,7 @@ in
           notion-app-enhanced
           fritzing
           krita
+          obsidian
 
           # coding
           vscodium
