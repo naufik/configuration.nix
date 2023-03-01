@@ -5,7 +5,9 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
+      <nixos-hardware/framework>
     ];
 
   # DHCP for wireless interface

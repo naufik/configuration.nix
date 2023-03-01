@@ -43,7 +43,8 @@ in
 
     # Security and Networking 
     openvpn
-    neofetch tmux htop wget
+    neofetch
+    tmux htop wget
 
     # Global dev tools. 
     cachix rnix-lsp git
