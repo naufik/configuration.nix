@@ -74,7 +74,6 @@ in
           anytype
           rawtherapee
           gimp
-          notion-app-enhanced
           fritzing
           krita
           obsidian
