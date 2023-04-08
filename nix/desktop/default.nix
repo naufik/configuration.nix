@@ -19,6 +19,11 @@ in
   ];
 
   config = {
+    hardware.openrazer = {
+      enable = true;
+      users = ["naufik"];
+    };
+
     networking.wireless.iwd.enable = true; #iwd support
     networking.networkmanager.wifi.backend = "iwd";
 
@@ -44,6 +49,9 @@ in
       # Desktop tools
       acpi actkbd pinentry-curses
       gsettings-desktop-schemas
+
+      # Hardware
+      polychromatic
 
       # Terminal
       zellij
