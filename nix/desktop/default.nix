@@ -19,11 +19,6 @@ in
   ];
 
   config = {
-    hardware.openrazer = {
-      enable = true;
-      users = ["naufik"];
-    };
-
     networking.wireless.iwd.enable = true; #iwd support
     networking.networkmanager.wifi.backend = "iwd";
 
@@ -38,7 +33,13 @@ in
     # Fingerprint Daemon
     services.fprintd.enable = true;
     services.fwupd.enable = true;
-
+    services.fwupd.extraRemotes = ["lvfs-testing"];
+    environment.etc."fwupd/uefi_capsule.conf".source = pkgs.lib.mkForce
+      (pkgs.writeText "uefi_capsule.conf" ''
+      [uefi_capsule]
+      DisableCapsuleUpdateOnDisk=true
+      OverrideESPMountPoint=${config.boot.loader.efi.efiSysMountPoint}
+    '');
     # Set your time zone.
     time.timeZone = "Australia/Melbourne";
 
