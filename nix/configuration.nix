@@ -17,7 +17,7 @@ in
     ] ++ extraImports;
 
   nix.settings.trusted-users = [ "root" ];
-  nix.settings.experimental-features = ["nix-command"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.

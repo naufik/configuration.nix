@@ -13,8 +13,6 @@ in
   imports = [
     ../sys/boot/plymouth.nix
     ../sys/services.nix
-
-    # TODO: separate this? but to me all the desktops should have a naufik user.
     ../home/naufik
   ];
 
@@ -22,7 +20,6 @@ in
     networking.wireless.iwd.enable = true; #iwd support
     networking.networkmanager.wifi.backend = "iwd";
 
-    # This was a good run but also there's more harm than good right now.
     boot.plymouth-encrypt.enable = false;
     system.devices.autoUSB.enable = true;
 
@@ -32,6 +29,8 @@ in
 
     # Fingerprint Daemon
     services.fprintd.enable = true;
+
+    #Firmware updater for BIOS.
     services.fwupd.enable = true;
     services.fwupd.extraRemotes = ["lvfs-testing"];
     environment.etc."fwupd/uefi_capsule.conf".source = pkgs.lib.mkForce
@@ -40,6 +39,7 @@ in
       DisableCapsuleUpdateOnDisk=true
       OverrideESPMountPoint=${config.boot.loader.efi.efiSysMountPoint}
     '');
+
     # Set your time zone.
     time.timeZone = "Australia/Melbourne";
 

@@ -24,7 +24,7 @@ in
 
       users.users.naufik = {
         isNormalUser = true;
-        extraGroups = ["docker" "video" "wheel" "networkmanager"];
+        extraGroups = ["video" "wheel" "networkmanager"];
         home = "/home/naufik";
         shell = pkgs.zsh;
       };
@@ -32,7 +32,7 @@ in
       nixpkgs.config.allowUnfree = true;
       programs.bash.shellAliases = aliases;
 
-      virtualisation.docker.enable = true;
+      virtualisation.docker.enable = false;
 
       home-manager.users.naufik = {
         home.pointerCursor = {
