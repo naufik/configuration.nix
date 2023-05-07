@@ -113,17 +113,20 @@ in
     };
 
     # Enable sound.
-    sound.enable = true;
+    # sound.enable = true;
     security.rtkit.enable = true;
-
     services.pipewire = {
       enable = true;
 
-      # I genuinely have no clue, enable everything.
+      # Add ability to emulate other sound APIs
       pulse.enable = true;
+
       alsa.enable = true;
-      jack.enable = true;
+      alsa.support32Bit = true;
+
       socketActivation = true;
+
+      wireplumber.enable = true;
     };
 
     environment.variables = rec {
