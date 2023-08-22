@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 let
   home-manager = import <home-manager> {};
+  unstablePkgs = import <unstable-pkgs> { config.allowUnfree = true; };
+
   aliases = {
     vim = "nvim";
   };
@@ -22,17 +24,18 @@ in
 
       nix.settings.trusted-users = [ "naufik" ];
 
+      # leave here for now
+      virtualisation.docker.enable = true;
+
       users.users.naufik = {
         isNormalUser = true;
-        extraGroups = ["video" "wheel" "networkmanager"];
+        extraGroups = ["video" "wheel" "docker" "networkmanager"];
         home = "/home/naufik";
         shell = pkgs.zsh;
       };
 
       nixpkgs.config.allowUnfree = true;
       programs.bash.shellAliases = aliases;
-
-      virtualisation.docker.enable = false;
 
       home-manager.users.naufik = {
         home.pointerCursor = {
@@ -71,7 +74,7 @@ in
           tdesktop  # (telegram desktop)
 
           # productivity
-          anytype
+          unstablePkgs.anytype
           rawtherapee
           gimp
           fritzing
