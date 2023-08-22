@@ -4,8 +4,6 @@
 
 { config, pkgs, ... }:
 let
-  # unstablePkgs = import <unstable-pkgs> { config.allowUnfree = true; };
-
   extraImports = [
       ./desktop
     ];

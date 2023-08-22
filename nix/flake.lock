@@ -1,0 +1,79 @@
+{
+  "nodes": {
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1692099905,
+        "narHash": "sha256-/pSusGhmIdSdAaywQRFA5dVbfdIzlWQTecM+E46+cJ0=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "2a6679aa9cc3872c29ba2a57fe1b71b3e3c5649f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-23.05",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1692373088,
+        "narHash": "sha256-EPgCecdc9I8aTdmDNoO1l7R72r2WPhZRcesV4nzxBj8=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "7f1836531b126cfcf584e7d7d71bf8758bb58969",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1694937365,
+        "narHash": "sha256-iHZSGrb9gVpZRR4B2ishUN/1LRKWtSHZNO37C8z1SmA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5d017a8822e0907fb96f7700a319f9fe2434de02",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-23.05",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1692808169,
+        "narHash": "sha256-x9Opq06rIiwdwGeK2Ykj69dNc2IvUH1fY55Wm7atwrE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9201b5ff357e781bf014d0330d18555695df7ba8",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "root": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixos-hardware": "nixos-hardware",
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-unstable": "nixpkgs-unstable"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
