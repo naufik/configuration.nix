@@ -1,9 +1,8 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# Common configurations to apply to all systems built
 
 { config, pkgs, ... }:
 let
+  # Use extraImports to specify system-specific configurations
   extraImports = [
       ./desktop
     ];
@@ -17,8 +16,8 @@ in
   nix.settings.trusted-users = [ "root" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
-
-  # Use the systemd-boot EFI boot loader.
+  
+  # use GRUB and enable EFI for all systems
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev";
