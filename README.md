@@ -1,17 +1,8 @@
 # NixOS Configuration
 
-The full configuration assumes that the `root` user's `nix-channel` are set to point to:
+Nix Flakes based configuration for my NixOS system(s). This has been recently converted into flakes, please don't look way too closely to my code.
 
-- `nixos` points to `nixos-23.05`
-- `home-manager` points to `home-manager/release-23.05`
-- `unstable-pkgs` points to `nixpkgs-unstable`
-
-In the process of moving the configuration to flakes. Ideally I want to get this done before 23.11.
-## Classes
-
-The goal is to separate different 'classes' of machines into their own configurations. So as this NixOS configuration is ported to different machines (unlikely, tbh), each machine is able to select its own "classes" and end up with an intersection of subset of configs that are available.
-
-At the moment, `desktop` is the only class since that's the only thing I use NixOS for. It contains my `desktop` environment.
+This is intended to host multiple configurations. However as of today I am only hosting one configuration: **desktop**.
 
 ## Notes
 
@@ -21,10 +12,11 @@ This configuration uses stage-1 systemd (`boot.initrd.systemd`) to run `plymouth
 
 Some users are reporting that this option [does not work reliably](https://github.com/NixOS/nixpkgs/issues/26722#issuecomment-1147735675) so take caution. Disable with `boot.plymouth-encrypt.enable = false;`.
 
+(I will need to re-test this.)
+
 ## Todo
 
-- Flakes
-- Self-isolate files.
+- Some config still live outside of the realm of Nix. While I don't want to put everything in here I would love to include all settings that **make sense** to include when you boot up an OS for the first time. Such as `xmonad` configs.
 
 ## License
 
