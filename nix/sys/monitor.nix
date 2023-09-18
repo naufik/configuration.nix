@@ -5,5 +5,7 @@
 {
   hardware.i2c.enable = true;
 
+  services.autorandr.enable = true;
+
   environment.systemPackages = with pkgs; [ ddcutil ];
 }
