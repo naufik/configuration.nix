@@ -1,13 +1,11 @@
 { config, pkgs, ... }:
-let 
-  home-manager = import <home-manager> {};
-
-  spotifydMpris = pkgs.spotifyd.override { withMpris = true; withPulseAudio = true; };
-
+let
   # bash aliases
   aliases = {
     vim = "nvim";
   };
+
+  spotifydMpris = pkgs.spotifyd.override { withMpris = true; withPulseAudio = true; };
 in
   {
   imports = [
@@ -75,6 +73,9 @@ in
 
       # Multimedia
       vlc spotifydMpris playerctl 
+
+      # More cli
+      ripgrep
     ];
 
     # Enable touchpad support (enabled default in most desktopManager).

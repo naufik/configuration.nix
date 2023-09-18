@@ -1,8 +1,5 @@
-{ config, pkgs, ... }:
+{ config, pkgs, home-manager, ... }:
 let
-  home-manager = import <home-manager> {};
-  unstablePkgs = import <unstable-pkgs> { config.allowUnfree = true; };
-
   aliases = {
     vim = "nvim";
   };
@@ -11,7 +8,7 @@ let
 in
   {
     imports = [
-      "${<home-manager>}/nixos"
+      home-manager.nixosModules.home-manager
     ];
 
     config = {
@@ -74,7 +71,6 @@ in
           tdesktop  # (telegram desktop)
 
           # productivity
-          unstablePkgs.anytype
           rawtherapee
           gimp
           fritzing
