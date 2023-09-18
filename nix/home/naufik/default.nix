@@ -21,12 +21,11 @@ in
 
       nix.settings.trusted-users = [ "naufik" ];
 
-      # leave here for now
       virtualisation.docker.enable = true;
 
       users.users.naufik = {
         isNormalUser = true;
-        extraGroups = ["video" "wheel" "docker" "networkmanager"];
+        extraGroups = ["video" "wheel" "docker" "networkmanager" "i2c"];
         home = "/home/naufik";
         shell = pkgs.zsh;
       };

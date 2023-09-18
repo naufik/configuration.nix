@@ -11,6 +11,7 @@ in
   imports = [
     ../sys/boot/plymouth.nix
     ../sys/services.nix
+    ../sys/monitor.nix
     ../home/naufik
   ];
 
