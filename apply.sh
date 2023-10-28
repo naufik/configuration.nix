@@ -6,10 +6,10 @@ fi
 echo "[ack] config applied to /etc/nixos in local machine"
 
 if [ "$1" = "switch" ]; then
-  nixos-rebuild switch --show-trace --flake ./nix
+  nixos-rebuild switch --show-trace --flake ./
   echo "[ack] switched to new config"
 elif [ "$1" = "boot" ]; then
-  nixos-rebuild boot --show-trace --flake ./nix
+  nixos-rebuild boot --show-trace --flake ./
   echo "[ack] new config will be activated on next boot"
 fi
 

@@ -40,7 +40,7 @@ in
     '');
 
     # Set your time zone.
-    time.timeZone = "Australia/Melbourne";
+    time.timeZone = "Asia/Jakarta";
 
     # Enable the X11 windowing system.
     services.xserver.enable = true;
@@ -159,6 +159,8 @@ in
       fontDir.enable = true;
 
       fonts = with pkgs; [
+        corefonts
+        ucs-fonts
         nerdfonts
 
         # Emojis

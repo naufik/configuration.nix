@@ -23,7 +23,7 @@
         };
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
+          ./nix/configuration.nix
         ];
       };
       default = inputs.self.nixosConfigurations.rivne;
