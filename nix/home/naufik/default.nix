@@ -106,6 +106,8 @@ in
           # Game development
           blender
           godot
+
+          inform7
         ];
 
         home.stateVersion = "22.11";
