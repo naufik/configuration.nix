@@ -86,7 +86,7 @@ in
           gimp
           fritzing
           krita
-          obsidian
+          (obsidian.override {electron = pkgs.electron_25;})
 
           # coding
           vscodium
