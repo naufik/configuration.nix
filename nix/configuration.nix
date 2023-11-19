@@ -24,13 +24,6 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-# Users and shells
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-  };
-
   environment.systemPackages = with pkgs; [
     # System
     pciutils usbutils 

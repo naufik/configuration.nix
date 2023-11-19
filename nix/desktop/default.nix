@@ -40,7 +40,7 @@ in
     '');
 
     # Set your time zone.
-    time.timeZone = "Asia/Jakarta";
+    time.timeZone = "Australia/Melbourne";
 
     # Enable the X11 windowing system.
     services.xserver.enable = true;

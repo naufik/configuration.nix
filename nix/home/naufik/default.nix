@@ -33,6 +33,18 @@ in
       nixpkgs.config.allowUnfree = true;
       programs.bash.shellAliases = aliases;
 
+      # Users and shells
+      programs.zsh = {
+        enable = true;
+        shellAliases = aliases;
+        autosuggestions.enable = true;
+        syntaxHighlighting.enable = true;
+
+        ohMyZsh = {
+          enable = true;
+        };
+      };
+
       home-manager.users.naufik = {
         home.pointerCursor = {
           x11.enable = true;
