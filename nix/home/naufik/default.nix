@@ -8,7 +8,7 @@ let
 in
   {
     imports = [
-      home-manager.nixosModules.home-manager
+      home-manager
     ];
 
     config = {
@@ -108,6 +108,7 @@ in
           godot
 
           inform7
+          anytype
         ];
 
         home.stateVersion = "22.11";

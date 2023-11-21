@@ -17,9 +17,9 @@
     nixosConfigurations = {
       rivne = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {
-          home-manager = inputs.home-manager;
-          nixos-hardware = inputs.nixos-hardware;
-          nixpkgs-unstable = inputs.nixpkgs-unstable;
+          home-manager = inputs.home-manager.nixosModules.home-manager;
+          nixos-hardware = inputs.nixos-hardware.nixosModules;
+          nixpkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
         };
         system = "x86_64-linux";
         modules = [

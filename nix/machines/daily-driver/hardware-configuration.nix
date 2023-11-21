@@ -7,7 +7,7 @@
   imports =
     [
       (modulesPath + "/installer/scan/not-detected.nix")
-      nixos-hardware.nixosModules.framework-11th-gen-intel
+      nixos-hardware.framework-11th-gen-intel
     ];
 
   # DHCP for wireless interface

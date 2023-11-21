@@ -1,6 +1,6 @@
 # Common configurations to apply to all systems built
 
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs-unstable, ... }:
 let
   # Use extraImports to specify system-specific configurations
   extraImports = [
@@ -28,14 +28,14 @@ in
     # System
     pciutils usbutils 
     # System: Helpers
-    nixos-option
+    nixos-option nixpkgs-unstable.nixd
 
     # Security and Networking 
     openvpn
     neofetch
     tmux htop wget
 
-    # Global dev tools. 
+    # Global dev tools.
     cachix rnix-lsp git
   ];
 
