@@ -12,6 +12,10 @@ in
     ];
 
     config = {
+      nixpkgs.config.permittedInsecurePackages = [
+        "electron-25.9.0" # required for obsidian
+      ];
+
       services.xserver.displayManager = {
         sessionCommands = ''
           dunst&
@@ -44,6 +48,8 @@ in
           enable = true;
         };
       };
+
+      programs.thefuck.enable = true;
 
       home-manager.users.naufik = {
         home.pointerCursor = {
@@ -86,7 +92,7 @@ in
           gimp
           fritzing
           krita
-          (obsidian.override {electron = pkgs.electron_25;})
+          obsidian
 
           # coding
           vscodium
@@ -97,7 +103,7 @@ in
           # Entertainment
           spotify
           spotify-tui
-
+          (dyalog.override {acceptLicense = true;})
           # Games
           crawlTiles
           dwarf-fortress
@@ -105,7 +111,7 @@ in
 
           # Game development
           blender
-          godot
+          godot3
 
           inform7
           anytype

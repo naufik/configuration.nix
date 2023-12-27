@@ -145,7 +145,7 @@ in
     # Fonts (system-level)
     nixpkgs.config.joypixels.acceptLicense = true;
     fonts = {
-      enableDefaultFonts = true;
+      enableDefaultPackages = true;
 
       fontconfig = {
         enable = true;
@@ -158,7 +158,7 @@ in
 
       fontDir.enable = true;
 
-      fonts = with pkgs; [
+      packages = with pkgs; [
         corefonts
         ucs-fonts
         nerdfonts

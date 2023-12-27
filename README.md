@@ -1,6 +1,6 @@
 # NixOS Configuration
 
-Nix Flakes based configuration for my NixOS system(s). This has been recently converted into flakes, please don't look way too closely to my code.
+Nix Flakes based configuration for my NixOS system(s). This has been recently converted into flakes... crudely.
 
 This is intended to host multiple configurations. However as of today I am only hosting one configuration: **desktop**.
 
@@ -8,7 +8,7 @@ This is intended to host multiple configurations. However as of today I am only 
 
 **Experimental features - stage-1 systemd**
 
-This configuration uses stage-1 systemd (`boot.initrd.systemd`) to run `plymouth-encrypt`. Which is currently [noted as experimental](https://search.nixos.org/options?channel=22.05&show=boot.initrd.systemd.enable&from=0&size=50&sort=relevance&type=packages&query=initrd.system) in NixOS 22.05 (have not checked for 23.05).
+This configuration uses stage-1 systemd (`boot.initrd.systemd`) to run `plymouth-encrypt`. Which is currently [noted as experimental](https://search.nixos.org/options?channel=22.05&show=boot.initrd.systemd.enable&from=0&size=50&sort=relevance&type=packages&query=initrd.system) in NixOS 22.05 (have not checked for 23.11).
 
 Some users are reporting that this option [does not work reliably](https://github.com/NixOS/nixpkgs/issues/26722#issuecomment-1147735675) so take caution. Disable with `boot.plymouth-encrypt.enable = false;`.
 
