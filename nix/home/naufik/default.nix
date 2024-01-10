@@ -114,6 +114,8 @@ in
           anytype
         ];
 
+        xdg.configFile."alacritty/alacritty.yml".source = ../../assets/alacritty.yml;
+
         home.stateVersion = "22.11";
       };
     };

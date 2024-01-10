@@ -1,0 +1,20 @@
+font:
+  normal:
+    family: CommitMono
+    style: Regular
+  italic:
+    family: CommitMono
+    style: Italic
+  bold:
+    family: CommitMono
+    style: Bold 
+  size: 10
+
+window:
+  padding:
+    x: 8
+    y: 8
+
+colors:
+  primary:
+    background: '#272932'
