@@ -159,9 +159,13 @@ in
       fontDir.enable = true;
 
       packages = with pkgs; [
+        #primary collection
         corefonts
         ucs-fonts
         nerdfonts
+
+        # extra fonts
+        commit-mono
 
         # Emojis
         joypixels
