@@ -97,13 +97,10 @@ in
           # coding
           vscodium
 
-          # Other devtools
-          terraform
-
           # Entertainment
           spotify
           spotify-tui
-          (dyalog.override {acceptLicense = true;})
+
           # Games
           crawlTiles
           dwarf-fortress
