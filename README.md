@@ -1,8 +1,21 @@
 # NixOS Configuration
 
-Nix Flakes based configuration for my NixOS system(s). This has been recently converted into flakes... crudely.
+Configuration for my NixOS system(s). It's pretty shit I'll be honest, but... a good start.
 
-This is intended to host multiple configurations. However as of today I am only hosting one configuration: **desktop**.
+## Structure
+
+```
++ root
+| flake.nix   - input
+++ /nix/      -- like src
+ +-- assets   -- dotfiles and other assets
+ +-- desktop  -- configurations relating to my "desktop" system
+ +-- home     -- users and home manager config
+ +-- machines -- hardware-config.nix basically
+ +-- sys      -- system modules i've written for practice
+```
+
+I need to clean up the structure to support multiple systems and grouping common modules together.
 
 ## Notes
 
