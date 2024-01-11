@@ -27,4 +27,11 @@ runxm procs = xmonad $ docks $ def
         , borderWidth = 0
         , layoutHook = spacingWithEdge 4 . avoidStruts $ emptyBSP
         , clickJustFocuses = False
-        }
+        } `additionalKeys` [
+          ((mod4Mask .|. shiftMask, xK_h), sendMessage $ MoveSplit L)
+        , ((mod4Mask .|. shiftMask, xK_l), sendMessage $ MoveSplit R)
+        , ((mod4Mask, xK_r), sendMessage $ Swap)
+        , ((mod4Mask .|. shiftMask, xK_r), sendMessage $ Rotate)
+        , ((mod4Mask, xK_h), sendMessage $ SplitShift Prev) 
+        , ((mod4Mask, xK_l), sendMessage $ SplitShift Next) 
+        ]
