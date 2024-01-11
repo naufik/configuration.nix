@@ -115,7 +115,7 @@ in
         ];
 
         xdg.configFile."alacritty/alacritty.yml".source = ../../assets/alacritty.yml;
-
+        xdg.configFile."xmonad/xmonad.hs".source = ../../assets/xmonad.hs;
         home.stateVersion = "22.11";
       };
     };
