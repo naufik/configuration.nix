@@ -2,6 +2,8 @@
 let
   aliases = {
     vim = "nvim";
+    ls = "ls --color=auto";
+    rm = "rm -i";
   };
 
   fixNssElectron = pkg: pkg.override { nss = pkgs.nss_latest; };
