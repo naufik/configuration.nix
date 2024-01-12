@@ -7,6 +7,8 @@ let
   };
 
   fixNssElectron = pkg: pkg.override { nss = pkgs.nss_latest; };
+
+  godot4 = pkgs.godot_4;
 in
   {
     imports = [
@@ -17,13 +19,6 @@ in
       nixpkgs.config.permittedInsecurePackages = [
         "electron-25.9.0" # required for obsidian
       ];
-
-      services.xserver.displayManager = {
-        sessionCommands = ''
-          dunst&
-          albert&
-        '';
-      };
 
       nix.settings.trusted-users = [ "naufik" ];
 
@@ -49,7 +44,11 @@ in
         ohMyZsh = {
           enable = true;
         };
-      };
+
+        promptInit = ''
+          export PROMPT='%1~ %# '
+        '';
+        };
 
       programs.thefuck.enable = true;
 
@@ -110,14 +109,16 @@ in
 
           # Game development
           blender
-          godot3
+          godot4
 
           inform7
           anytype
         ];
 
         xdg.configFile."alacritty/alacritty.yml".source = ../../assets/alacritty.yml;
+        # TODO can we mix this with desktop?
         xdg.configFile."xmonad/xmonad.hs".source = ../../assets/xmonad.hs;
+
         home.stateVersion = "22.11";
       };
     };

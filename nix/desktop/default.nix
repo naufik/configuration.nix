@@ -1,10 +1,5 @@
 { config, pkgs, ... }:
 let
-  # bash aliases
-  aliases = {
-    vim = "nvim";
-  };
-
   spotifydMpris = pkgs.spotifyd.override { withMpris = true; withPulseAudio = true; };
 in
   {
@@ -16,7 +11,7 @@ in
   ];
 
   config = {
-    networking.wireless.iwd.enable = true; #iwd support
+    networking.wireless.iwd.enable = true;
     networking.networkmanager.wifi.backend = "iwd";
 
     boot.plymouth-encrypt.enable = false;
@@ -39,19 +34,13 @@ in
       OverrideESPMountPoint=${config.boot.loader.efi.efiSysMountPoint}
     '');
 
-    # Set your time zone.
+    # TODO setup imperatively?
     time.timeZone = "Australia/Melbourne";
-
-    # Enable the X11 windowing system.
-    services.xserver.enable = true;
 
     environment.systemPackages = with pkgs; [
       # Desktop tools
       acpi actkbd pinentry-curses
       gsettings-desktop-schemas
-
-      # Hardware
-      polychromatic
 
       # Terminal
       zellij
@@ -68,9 +57,9 @@ in
       # Built in desktop app
       thunderbird firefox alacritty pavucontrol
       neovim feh scrot neovide filezilla
-      
+
       # PDF reader
-      evince pdfarranger
+      pdfarranger
 
       # Multimedia
       vlc spotifydMpris playerctl 
@@ -79,13 +68,27 @@ in
       ripgrep
     ];
 
+    # Enable the X11 windowing system.
+    services.xserver.enable = true;
+
     # Enable touchpad support (enabled default in most desktopManager).
     services.xserver.libinput.enable = true;
 
     services.xserver.windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      extraPackages = haskellPackages: [ pkgs.haskellPackages.xmobar ];
+      extraPackages = haskellPackages: [ haskellPackages.xmobar ];
+      config = ../assets/xmonad.hs;
+    };
+
+    # TODO run as service <maybe in home manager>
+    services.xserver.displayManager = {
+      sessionCommands = let 
+        dunstConfig = ../assets/dunstrc;
+      in ''
+        dunst -conf ${dunstConfig}&
+        albert&
+      '';
     };
 
     # Essentials
@@ -114,8 +117,7 @@ in
       agent.enableSSHSupport = true;
     };
 
-    # Enable sound.
-    # sound.enable = true;
+    # Enable sound
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
