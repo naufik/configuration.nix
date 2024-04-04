@@ -80,6 +80,7 @@ in
         # User-level packages.
         home.packages = with pkgs; [
           bitwarden
+          qbittorrent
 
           # Entertainment
           psst
@@ -101,6 +102,7 @@ in
           # Entertainment
           spotify
           spotify-tui
+          foliate
 
           # Games
           crawlTiles
