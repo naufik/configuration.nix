@@ -36,7 +36,7 @@ in
     tmux htop wget
 
     # Global dev tools.
-    cachix rnix-lsp git
+    cachix git
   ];
 
   # This value determines the NixOS release from which the default
