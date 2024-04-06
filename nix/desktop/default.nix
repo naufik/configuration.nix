@@ -34,7 +34,7 @@ in
       OverrideESPMountPoint=${config.boot.loader.efi.efiSysMountPoint}
     '');
 
-    time.timeZone = "Australia/Melbourne";
+    services.automatic-timezoned.enable = true;
 
     environment.systemPackages = with pkgs; [
       # Desktop tools
