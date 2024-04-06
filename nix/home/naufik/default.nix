@@ -118,8 +118,9 @@ in
         ];
 
         xdg.configFile."alacritty/alacritty.yml".source = ../../assets/alacritty.yml;
-        # TODO can we mix this with desktop?
         xdg.configFile."xmonad/xmonad.hs".source = ../../assets/xmonad.hs;
+        xdg.configFile."xmobar/.xmobarrc0".source = ../../assets/xmobar/xmobarrc0;
+        xdg.configFile."xmobar/.xmobarrc1".source = ../../assets/xmobar/xmobarrc1;
 
         home.stateVersion = "22.11";
       };
