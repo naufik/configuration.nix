@@ -1,0 +1,32 @@
+Config {
+  bgColor = "#44074b"
+       , fgColor = "#bbbbbb"
+       , position = Top L 18  
+       , commands = [ Run Cpu ["-L","3","-H","50",
+                               "--normal","green","--high","red", "-t", "CPU: <used>%"] 10
+                    , Run Memory ["-t","RAM: <usedratio>%"] 10
+                    , Run Com "uname" ["-s","-r"] "" 36000
+                    , Run Date "%a %b %d %Y · %H:%M" "date" 10
+                    
+        , Run Battery        [ "--template" , "<acstatus>"
+                             , "--Low"      , "20"        -- units: %
+                             , "--High"     , "60"        -- units: %
+                             , "--low"      , "red"
+                             , "--normal"   , "#bbbbbb"
+                             , "--high"     , "#40dd4d"
+
+                             , "--" -- battery specific options
+                                       -- discharging status
+                                       , "-o", "\xf0079 <left>%"
+                                       -- AC "on" status
+                                       , "-O", "\xf1e6 <left>%"
+                                       -- charged status
+                                       , "-i", "\xf1e6 A/C"
+                             ] 50
+       , Run StdinReader
+       ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , font = "Inconsolata Nerd Font Bold 12"
+       , template = "%StdinReader% }{ %date% · %battery% " 
+       }

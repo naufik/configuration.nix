@@ -34,7 +34,6 @@ in
       OverrideESPMountPoint=${config.boot.loader.efi.efiSysMountPoint}
     '');
 
-    # TODO setup imperatively?
     time.timeZone = "Australia/Melbourne";
 
     environment.systemPackages = with pkgs; [
