@@ -38,7 +38,7 @@ in
       programs.zsh = {
         enable = true;
         shellAliases = aliases;
-        autosuggestions.enable = true;
+        autosuggestions.enable = false; # Disable first because it's "stupid"
         syntaxHighlighting.enable = true;
 
         ohMyZsh = {
