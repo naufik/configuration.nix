@@ -1,6 +1,6 @@
 # Common configurations to apply to all systems built
 
-{ config, pkgs, nixpkgs-unstable, ... }:
+{ pkgs, nixpkgs-unstable, ... }:
 let
   # Use extraImports to specify system-specific configurations
   extraImports = [

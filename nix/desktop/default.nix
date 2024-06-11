@@ -71,7 +71,7 @@ in
     services.xserver.enable = true;
 
     # Enable touchpad support (enabled default in most desktopManager).
-    services.xserver.libinput.enable = true;
+    services.libinput.enable = true;
 
     services.xserver.windowManager.xmonad = {
       enable = true;
@@ -138,7 +138,7 @@ in
       XDG_DATA_HOME = "\${HOME}/.local/share";
     };
 
-    services.xserver.displayManager.autoLogin.user = "naufik";
+    services.displayManager.autoLogin.user = "naufik";
     xdg.autostart.enable = true;
 
     services.tumbler.enable = true;
