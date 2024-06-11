@@ -101,7 +101,6 @@ in
 
           # Entertainment
           spotify
-          spotify-tui
           foliate
 
           # Games

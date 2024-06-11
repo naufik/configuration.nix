@@ -38,7 +38,7 @@ in
 
     environment.systemPackages = with pkgs; [
       # Desktop tools
-      acpi actkbd pinentry-curses
+      acpi actkbd 
       gsettings-desktop-schemas
 
       # Terminal
@@ -112,7 +112,7 @@ in
     # Add gpg agent.
     programs.gnupg = {
       agent.enable = true;
-      agent.pinentryFlavor = "curses";
+      agent.pinentryPackage = pkgs.pinentry-curses;
       agent.enableSSHSupport = true;
     };
 
