@@ -45,7 +45,7 @@ in
       zellij
 
       # Desktop environment
-      xmobar albert rofi eww dunst
+      xmobar rofi eww dunst
       flameshot
       xfce.thunar
       libsForQt5.ark
@@ -86,7 +86,6 @@ in
         dunstConfig = ../assets/dunstrc;
       in ''
         dunst -conf ${dunstConfig}&
-        albert&
       '';
     };
 
