@@ -26,6 +26,25 @@
           ./nix/configuration.nix
         ];
       };
+
+      raspi-minimal = let 
+        pkgs-aarch64 = import inputs.nixpkgs { system = "aarch64-linux"; };
+      in
+      inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          pkgs-aarch64 = pkgs-aarch64;
+        };
+        modules = [
+          "${inputs.nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+          {
+            nixpkgs.config.allowUnsupportedSystem = true;
+            nixpkgs.hostPlatform.system = "aarch64-linux";
+            nixpkgs.buildPlatform.system = "x86_64-linux";
+          }
+          ./nix/home-raspi
+        ];
+      };
+
       default = inputs.self.nixosConfigurations.rivne;
     };
   };

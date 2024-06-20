@@ -2,12 +2,12 @@
 
 { pkgs, nixpkgs-unstable, ... }:
 let
-  # Use extraImports to specify system-specific configurations
   extraImports = [
       ./desktop
     ];
 in
-{
+  {
+  # TODO: move imports to `rivne`
   imports =
     [
      ./machines/daily-driver/hardware-configuration.nix
@@ -16,8 +16,8 @@ in
   nix.settings.trusted-users = [ "root" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
-  
-  # use GRUB and enable EFI for all systems
+
+  # TODO: move this to desktop settings only as this is not root!
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev";

@@ -7,7 +7,6 @@ let
   };
 
   fixNssElectron = pkg: pkg.override { nss = pkgs.nss_latest; };
-
   godot4 = pkgs.godot_4;
 in
   {
