@@ -1,7 +1,4 @@
 { config, pkgs, ... }:
-let
-  spotifydMpris = pkgs.spotifyd.override { withMpris = true; withPulseAudio = true; };
-in
   {
   imports = [
     ../sys/boot/plymouth.nix
@@ -38,7 +35,7 @@ in
 
     environment.systemPackages = with pkgs; [
       # Desktop tools
-      acpi actkbd 
+      acpi
       gsettings-desktop-schemas
 
       # Terminal
@@ -50,21 +47,22 @@ in
       xfce.thunar
       libsForQt5.ark
 
-      # Security and Networking 
+      # Security and Networking
       age
 
       # Built in desktop app
-      thunderbird firefox alacritty pavucontrol
+      firefox alacritty pavucontrol
       neovim feh scrot neovide filezilla
+      neofetch
 
       # PDF reader
       pdfarranger
 
       # Multimedia
-      vlc spotifydMpris playerctl 
+      vlc playerctl
 
       # More cli
-      ripgrep
+      ripgrep lnav
     ];
 
     # Enable the X11 windowing system.
@@ -77,7 +75,7 @@ in
       enable = true;
       enableContribAndExtras = true;
       extraPackages = haskellPackages: [ haskellPackages.xmobar ];
-      config = ../assets/xmonad.hs;
+    #config = ../assets/xmonad.hs;
     };
 
     # TODO run as service <maybe in home manager>
@@ -101,11 +99,9 @@ in
       shadowExclude = [
         "window_type *= 'menu'"
         "class_g = 'firefox' && argb"
-        "class_g = 'albert'"
       ];
     };
 
-    # disable the firewall altogether.
     networking.firewall.enable = false;
 
     # Add gpg agent.
@@ -131,7 +127,7 @@ in
       wireplumber.enable = true;
     };
 
-    environment.variables = rec {
+    environment.variables = {
       XDG_CACHE_HOME = "\${HOME}/.cache";
       XDG_CONFIG_HOME = "\${HOME}/.config";
       XDG_DATA_HOME = "\${HOME}/.local/share";
