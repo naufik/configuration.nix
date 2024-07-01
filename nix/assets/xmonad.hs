@@ -33,5 +33,8 @@ runxm procs = xmonad $ docks $ def
         , ((mod4Mask, xK_r), sendMessage $ Swap)
         , ((mod4Mask .|. shiftMask, xK_r), sendMessage $ Rotate)
         , ((mod4Mask, xK_h), sendMessage $ SplitShift Prev) 
-        , ((mod4Mask, xK_l), sendMessage $ SplitShift Next) 
+        , ((mod4Mask, xK_l), sendMessage $ SplitShift Next)
+        , ((0, xK_Print), safeSpawn "flameshot" ["gui"])
+        , ((mod4Mask, xK_slash), safeSpawn "rofi" ["-show", "drun"])
+        , ((mod4Mask, xK_backslash), safeSpawn "rofi" ["-show", "run"])
         ]
