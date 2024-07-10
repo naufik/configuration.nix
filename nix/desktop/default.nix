@@ -52,8 +52,8 @@
 
       # Built in desktop app
       firefox alacritty pavucontrol
-      neovim feh scrot neovide filezilla
-      neofetch
+      neovim feh scrot neovide
+      fastfetch
 
       # PDF reader
       pdfarranger
