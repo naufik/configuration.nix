@@ -3,7 +3,7 @@ import XMonad
 import XMonad.Layout.BinarySpacePartition
 import XMonad.Layout.Spacing
 import XMonad.Layout.NoBorders
-
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 
 import XMonad.Util.Run
@@ -16,7 +16,7 @@ main = do {
 ; runxm [p1, p2]
 }
 
-runxm procs = xmonad $ docks $ def
+runxm procs = xmonad . docks . ewmh $ def
         { modMask = mod4Mask -- Use Super instead of Alt
         , terminal = "alacritty"
         , focusFollowsMouse = False
@@ -37,4 +37,5 @@ runxm procs = xmonad $ docks $ def
         , ((0, xK_Print), safeSpawn "flameshot" ["gui"])
         , ((mod4Mask, xK_slash), safeSpawn "rofi" ["-show", "drun"])
         , ((mod4Mask, xK_backslash), safeSpawn "rofi" ["-show", "run"])
+        , ((mod4Mask, xK_Tab), safeSpawn "rofi" ["-show", "window"])
         ]
