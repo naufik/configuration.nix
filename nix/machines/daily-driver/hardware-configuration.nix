@@ -15,11 +15,9 @@
   networking.hostName = "rivne"; # Define your hostname.
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
+  hardware.graphics.enable = true;
 
-  hardware.opengl.extraPackages = with pkgs; [
+  hardware.graphics.extraPackages = with pkgs; [
         intel-media-driver
         vaapiVdpau
         libvdpau-va-gl

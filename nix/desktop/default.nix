@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs-unstable, ... }:
   {
   imports = [
     ../sys/boot/plymouth.nix
@@ -52,8 +52,10 @@
 
       # Built in desktop app
       firefox alacritty pavucontrol
-      neovim feh scrot neovide
+      feh scrot neovide
       fastfetch
+
+      nixpkgs-unstable.neovim
 
       # PDF reader
       pdfarranger

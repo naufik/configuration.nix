@@ -102,6 +102,8 @@ in
           spotify
           foliate
 
+          qbittorrent-enhanced
+
           # Games
           crawlTiles
           dwarf-fortress
