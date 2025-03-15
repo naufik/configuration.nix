@@ -1,4 +1,4 @@
-{ config, pkgs, home-manager, ... }:
+{ pkgs, home-manager, ... }:
 let
   aliases = {
     vim = "nvim";
@@ -121,7 +121,7 @@ in
         xdg.configFile."xmonad/xmonad.hs".source = ../../assets/xmonad.hs;
         xdg.configFile."xmobar/.xmobarrc0".source = ../../assets/xmobar/xmobarrc0;
         xdg.configFile."xmobar/.xmobarrc1".source = ../../assets/xmobar/xmobarrc1;
-
+        xdg.configFile."rofi/config.rasi".text = "@theme \"${pkgs.rofi}/share/rofi/themes/purple.rasi\"";
         home.stateVersion = "22.11";
       };
     };
