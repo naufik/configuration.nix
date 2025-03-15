@@ -1,5 +1,10 @@
-{ config, pkgs, nixpkgs-unstable, ... }:
-  {
+{
+  config,
+  pkgs,
+  nixpkgs-unstable,
+  ...
+}:
+{
   imports = [
     ../sys/boot/plymouth.nix
     ../sys/services.nix
@@ -14,7 +19,7 @@
     boot.plymouth-encrypt.enable = false;
     system.devices.autoUSB.enable = true;
 
-   # Base programs
+    # Base programs
     programs.light.enable = true;
     programs.dconf.enable = true;
 
@@ -23,13 +28,14 @@
 
     #Firmware updater for BIOS.
     services.fwupd.enable = true;
-    services.fwupd.extraRemotes = ["lvfs-testing"];
-    environment.etc."fwupd/uefi_capsule.conf".source = pkgs.lib.mkForce
-      (pkgs.writeText "uefi_capsule.conf" ''
-      [uefi_capsule]
-      DisableCapsuleUpdateOnDisk=true
-      OverrideESPMountPoint=${config.boot.loader.efi.efiSysMountPoint}
-    '');
+    services.fwupd.extraRemotes = [ "lvfs-testing" ];
+    environment.etc."fwupd/uefi_capsule.conf".source = pkgs.lib.mkForce (
+      pkgs.writeText "uefi_capsule.conf" ''
+        [uefi_capsule]
+        DisableCapsuleUpdateOnDisk=true
+        OverrideESPMountPoint=${config.boot.loader.efi.efiSysMountPoint}
+      ''
+    );
 
     services.automatic-timezoned.enable = true;
 
@@ -42,7 +48,10 @@
       zellij
 
       # Desktop environment
-      xmobar rofi eww dunst
+      xmobar
+      rofi
+      eww
+      dunst
       flameshot
       xfce.thunar
       libsForQt5.ark
@@ -51,8 +60,12 @@
       age
 
       # Built in desktop app
-      firefox alacritty pavucontrol
-      feh scrot neovide
+      firefox
+      alacritty
+      pavucontrol
+      feh
+      scrot
+      neovide
       fastfetch
 
       nixpkgs-unstable.neovim
@@ -61,10 +74,12 @@
       pdfarranger
 
       # Multimedia
-      vlc playerctl
+      vlc
+      playerctl
 
       # More cli
-      ripgrep lnav
+      ripgrep
+      lnav
     ];
 
     # Enable the X11 windowing system.
@@ -77,16 +92,18 @@
       enable = true;
       enableContribAndExtras = true;
       extraPackages = haskellPackages: [ haskellPackages.xmobar ];
-    #config = ../assets/xmonad.hs;
+      #config = ../assets/xmonad.hs;
     };
 
     # TODO run as service <maybe in home manager>
     services.xserver.displayManager = {
-      sessionCommands = let 
-        dunstConfig = ../assets/dunstrc;
-      in ''
-        dunst -conf ${dunstConfig}&
-      '';
+      sessionCommands =
+        let
+          dunstConfig = ../assets/dunstrc;
+        in
+        ''
+          dunst -conf ${dunstConfig}&
+        '';
     };
 
     # Essentials

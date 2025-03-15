@@ -1,10 +1,15 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.boot.plymouth-encrypt;
 in
 with lib;
 {
-  imports = [];
+  imports = [ ];
 
   config = mkIf cfg.enable {
     boot.plymouth = {
@@ -20,7 +25,7 @@ with lib;
 
   options = {
     boot.plymouth-encrypt = {
-      enable = mkEnableOption "plymouth-encrypt"; 
+      enable = mkEnableOption "plymouth-encrypt";
     };
   };
 }

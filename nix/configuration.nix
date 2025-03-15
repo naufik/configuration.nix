@@ -4,19 +4,21 @@
 let
   # Use extraImports to specify system-specific configurations
   extraImports = [
-      ./desktop
-    ];
+    ./desktop
+  ];
 in
 {
-  imports =
-    [
-     ./machines/daily-driver/hardware-configuration.nix
-    ] ++ extraImports;
+  imports = [
+    ./machines/daily-driver/hardware-configuration.nix
+  ] ++ extraImports;
 
   nix.settings.trusted-users = [ "root" ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nixpkgs.config.allowUnfree = true;
-  
+
   # use GRUB and enable EFI for all systems
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
@@ -26,17 +28,22 @@ in
 
   environment.systemPackages = with pkgs; [
     # System
-    pciutils usbutils 
+    pciutils
+    usbutils
     # System: Helpers
-    nixos-option nixpkgs-unstable.nixd
+    nixos-option
+    nixpkgs-unstable.nixd
 
-    # Security and Networking 
+    # Security and Networking
     openvpn
     neofetch
-    tmux htop wget
+    tmux
+    htop
+    wget
 
     # Global dev tools.
-    cachix git
+    cachix
+    git
   ];
 
   # This value determines the NixOS release from which the default

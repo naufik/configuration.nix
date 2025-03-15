@@ -1,7 +1,12 @@
- { config, lib, pkgs, ... }:
-  let 
-    cfg = config.system.devices.autoUSB;
-  in
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.system.devices.autoUSB;
+in
 {
   options = {
     system.devices.autoUSB.enable = lib.mkOption {
@@ -9,14 +14,14 @@
       default = true;
     };
   };
-    
+
   config = {
     systemd.services.udiskie = lib.mkIf cfg.enable {
       description = "Auto mount usb device";
 
       wantedBy = [ "graphical-session.target" ];
       partOf = [ "graphical-session.target" ];
-      after = ["graphical-session-pre.target"];
+      after = [ "graphical-session-pre.target" ];
 
       serviceConfig = {
         Type = "exec";
@@ -27,5 +32,5 @@
     };
 
     environment.systemPackages = [ pkgs.udiskie ];
-   };
+  };
 }

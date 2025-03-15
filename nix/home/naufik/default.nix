@@ -10,119 +10,125 @@ let
 
   godot4 = pkgs.godot_4;
 in
-  {
-    imports = [
-      home-manager
+{
+  imports = [
+    home-manager
+  ];
+
+  config = {
+    nixpkgs.config.permittedInsecurePackages = [
+      "electron-25.9.0" # required for obsidian
     ];
 
-    config = {
-      nixpkgs.config.permittedInsecurePackages = [
-        "electron-25.9.0" # required for obsidian
+    nix.settings.trusted-users = [ "naufik" ];
+
+    virtualisation.docker.enable = true;
+
+    users.users.naufik = {
+      isNormalUser = true;
+      extraGroups = [
+        "video"
+        "wheel"
+        "docker"
+        "networkmanager"
+        "i2c"
+      ];
+      home = "/home/naufik";
+      shell = pkgs.zsh;
+    };
+
+    nixpkgs.config.allowUnfree = true;
+    programs.bash.shellAliases = aliases;
+
+    # Users and shells
+    programs.zsh = {
+      enable = true;
+      shellAliases = aliases;
+      autosuggestions.enable = false; # Disable first because it's "stupid"
+      syntaxHighlighting.enable = true;
+
+      ohMyZsh = {
+        enable = true;
+      };
+
+      promptInit = ''
+        export PROMPT='%1~ %# '
+      '';
+    };
+
+    programs.thefuck.enable = true;
+
+    home-manager.users.naufik = {
+      home.pointerCursor = {
+        x11.enable = true;
+        gtk.enable = true;
+
+        package = pkgs.qogir-icon-theme;
+        name = "Qogir-dark";
+      };
+
+      gtk = {
+        enable = true;
+        theme = {
+          name = "Qogir-Dark";
+          package = pkgs.qogir-theme;
+        };
+        iconTheme = {
+          name = "Qogir-dark";
+          package = pkgs.qogir-icon-theme;
+        };
+
+        gtk4.extraConfig = {
+          gtk-hint-font-metrics = 1;
+        };
+      };
+
+      # User-level packages.
+      home.packages = with pkgs; [
+        bitwarden
+
+        # Entertainment
+        psst
+
+        # communications
+        (fixNssElectron discord)
+        tdesktop # (telegram desktop)
+
+        # productivity
+        rawtherapee
+        gimp
+        fritzing
+        krita
+        obsidian
+
+        # coding
+        vscodium
+
+        # Entertainment
+        spotify
+        foliate
+
+        qbittorrent-enhanced
+
+        # Games
+        crawlTiles
+        dwarf-fortress
+        openttd
+
+        # Game development
+        blender
+        godot4
+
+        inform7
+        anytype
       ];
 
-      nix.settings.trusted-users = [ "naufik" ];
-
-      virtualisation.docker.enable = true;
-
-      users.users.naufik = {
-        isNormalUser = true;
-        extraGroups = ["video" "wheel" "docker" "networkmanager" "i2c"];
-        home = "/home/naufik";
-        shell = pkgs.zsh;
-      };
-
-      nixpkgs.config.allowUnfree = true;
-      programs.bash.shellAliases = aliases;
-
-      # Users and shells
-      programs.zsh = {
-        enable = true;
-        shellAliases = aliases;
-        autosuggestions.enable = false; # Disable first because it's "stupid"
-        syntaxHighlighting.enable = true;
-
-        ohMyZsh = {
-          enable = true;
-        };
-
-        promptInit = ''
-          export PROMPT='%1~ %# '
-        '';
-        };
-
-      programs.thefuck.enable = true;
-
-      home-manager.users.naufik = {
-        home.pointerCursor = {
-          x11.enable = true;
-          gtk.enable = true;
-
-          package = pkgs.qogir-icon-theme;
-          name = "Qogir-dark";
-        };
-
-        gtk = {
-          enable = true;
-          theme = {
-            name = "Qogir-Dark";
-            package = pkgs.qogir-theme;
-          };
-          iconTheme = {
-            name = "Qogir-dark";
-            package = pkgs.qogir-icon-theme;
-          };
-
-          gtk4.extraConfig = {
-            gtk-hint-font-metrics = 1;
-          };
-        };
-
-        # User-level packages.
-        home.packages = with pkgs; [
-          bitwarden
-
-          # Entertainment
-          psst
-
-          # communications
-          (fixNssElectron discord)
-          tdesktop  # (telegram desktop)
-
-          # productivity
-          rawtherapee
-          gimp
-          fritzing
-          krita
-          obsidian
-
-          # coding
-          vscodium
-
-          # Entertainment
-          spotify
-          foliate
-
-          qbittorrent-enhanced
-
-          # Games
-          crawlTiles
-          dwarf-fortress
-          openttd
-
-          # Game development
-          blender
-          godot4
-
-          inform7
-          anytype
-        ];
-
-        xdg.configFile."alacritty/alacritty.toml".source = ../../assets/alacritty.toml;
-        xdg.configFile."xmonad/xmonad.hs".source = ../../assets/xmonad.hs;
-        xdg.configFile."xmobar/.xmobarrc0".source = ../../assets/xmobar/xmobarrc0;
-        xdg.configFile."xmobar/.xmobarrc1".source = ../../assets/xmobar/xmobarrc1;
-        xdg.configFile."rofi/config.rasi".text = "@theme \"${pkgs.rofi}/share/rofi/themes/purple.rasi\"";
-        home.stateVersion = "22.11";
-      };
+      xdg.configFile."alacritty/alacritty.toml".source = ../../assets/alacritty.toml;
+      xdg.configFile."xmonad/xmonad.hs".source = ../../assets/xmonad.hs;
+      xdg.configFile."xmobar/.xmobarrc0".source = ../../assets/xmobar/xmobarrc0;
+      xdg.configFile."xmobar/.xmobarrc1".source = ../../assets/xmobar/xmobarrc1;
+      xdg.configFile."rofi/config.rasi".text = "@theme \"${pkgs.rofi}/share/rofi/themes/purple.rasi\"";
+      home.stateVersion = "22.11";
     };
-  }
+  };
+}
