@@ -101,8 +101,9 @@ in
         krita
         obsidian
 
-        # coding
+        # development tools
         vscodium
+        harlequin
 
         # Entertainment
         spotify
@@ -122,6 +123,8 @@ in
         inform7
         anytype
       ];
+
+      services.copyq.enable = true;
 
       xdg.configFile."alacritty/alacritty.toml".source = ../../assets/alacritty.toml;
       xdg.configFile."xmonad/xmonad.hs".source = ../../assets/xmonad.hs;
