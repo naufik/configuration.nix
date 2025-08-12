@@ -18,6 +18,7 @@ in
   config = {
     nixpkgs.config.permittedInsecurePackages = [
       "electron-25.9.0" # required for obsidian
+      "electron-33.4.11"
     ];
 
     nix.settings.trusted-users = [ "naufik" ];
@@ -125,6 +126,7 @@ in
       ];
 
       services.copyq.enable = true;
+      services.flameshot.enable = true;
 
       xdg.configFile."alacritty/alacritty.toml".source = ../../assets/alacritty.toml;
       xdg.configFile."xmonad/xmonad.hs".source = ../../assets/xmonad.hs;

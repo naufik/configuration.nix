@@ -52,7 +52,7 @@
       rofi
       eww
       dunst
-      flameshot
+      # flameshot
       xfce.thunar
       libsForQt5.ark
 
@@ -177,7 +177,7 @@
         #primary collection
         corefonts
         ucs-fonts
-        nerdfonts
+        nerd-fonts.inconsolata
 
         # extra fonts
         commit-mono
