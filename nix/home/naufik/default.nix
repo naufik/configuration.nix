@@ -120,9 +120,6 @@ in
         # Game development
         blender
         godot4
-
-        inform7
-        anytype
       ];
 
       services.copyq.enable = true;
