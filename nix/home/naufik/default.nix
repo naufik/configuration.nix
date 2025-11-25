@@ -116,6 +116,7 @@ in
         crawlTiles
         dwarf-fortress
         openttd
+        melonDS
 
         # Game development
         blender
