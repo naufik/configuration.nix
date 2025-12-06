@@ -52,9 +52,8 @@
       rofi
       eww
       dunst
-      # flameshot
       xfce.thunar
-      libsForQt5.ark
+      kdePackages.ark
 
       # Security and Networking
       age

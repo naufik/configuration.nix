@@ -57,8 +57,6 @@ in
       '';
     };
 
-    programs.thefuck.enable = true;
-
     home-manager.users.naufik = {
       home.pointerCursor = {
         x11.enable = true;
@@ -86,19 +84,19 @@ in
 
       # User-level packages.
       home.packages = with pkgs; [
-        bitwarden
+        bitwarden-desktop
 
         # Entertainment
         psst
 
         # communications
         (fixNssElectron discord)
-        tdesktop # (telegram desktop)
+        telegram-desktop # (telegram desktop)
 
         # productivity
         rawtherapee
         gimp
-        fritzing
+        # fritzing
         krita
         obsidian
 
