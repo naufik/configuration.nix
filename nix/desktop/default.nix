@@ -20,7 +20,6 @@
     system.devices.autoUSB.enable = true;
 
     # Base programs
-    programs.light.enable = true;
     programs.dconf.enable = true;
 
     # Fingerprint Daemon

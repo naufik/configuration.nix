@@ -1,4 +1,4 @@
-{ pkgs, home-manager, ... }:
+{ config, pkgs, home-manager, ... }:
 let
   aliases = {
     vim = "nvim";
@@ -17,8 +17,7 @@ in
 
   config = {
     nixpkgs.config.permittedInsecurePackages = [
-      "electron-25.9.0" # required for obsidian
-      "electron-33.4.11"
+      "electron-39.8.10"
     ];
 
     nix.settings.trusted-users = [ "naufik" ];

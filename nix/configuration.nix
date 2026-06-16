@@ -36,7 +36,6 @@ in
 
     # Security and Networking
     openvpn
-    neofetch
     tmux
     htop
     wget
